@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>科学计算器</title>
+    <script src="calculator.js" defer></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #fffde7 100%);
+            max-width: 480px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        input, select, button {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #2196f3;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(33,150,243,0.2);
+        }
+        button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #1976d2;
+        }
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            color: #333;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center; color:#1976d2; margin-bottom: 2rem;">科学计算器</h1>
+    <div class="input-group">
+        <input type="number" id="num1" placeholder="输入第一个数字" required>
+    </div>
+    <div class="input-group">
+        <select id="operator" required>
+            <option value="+" selected>加</option>
+            <option value="-">减</option>
+            <option value="*">乘</option>
+            <option value="/">除</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <input type="number" id="num2" placeholder="输入第二个数字" required>
+    </div>
+    <div class="controls">
+        <button onclick="calculate()">计算</button>
+        <button type="reset" onclick="resetForm()" style="background:#f44336;">重置</button>
+    </div>
+    <div class="result" id="result">等待计算...</div>
+
+    <script>
+        function resetForm() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('operator').value = '+';
+            document.getElementById('result').textContent = '等待计算...';
+        }
+    </script>
+</body>
+</html>
