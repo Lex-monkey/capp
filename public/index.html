@@ -54,7 +54,45 @@
             display: flex;
             gap: 1rem;
         }
+        #display {
+            background: #f0f0f0;
+            font-size: 1.8rem;
+            padding: 1rem;
+            text-align: right;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            min-height: 2.5rem;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        .button-grid button {
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border: none;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .button-grid button:hover {
+            background-color: #cfcfcf;
+        }
+        .button-grid button.operator {
+            background-color: #ffcc00;
+        }
+        .button-grid button.equal {
+            background-color: #1976d2;
+            color: white;
+        }
+        .button-grid button.clear {
+            background-color: #f44336;
+            color: white;
+        }
     </style>
+
 </head>
 <body>
     <h1 style="text-align:center; color:#1976d2; margin-bottom: 2rem;">科学计算器</h1>
@@ -75,8 +113,31 @@
     <div class="controls">
         <button onclick="calculate()">计算</button>
         <button type="reset" onclick="resetForm()" style="background:#f44336;">重置</button>
+        <button type="button" onclick="toggleInputMode()" style="background:#4CAF50;">切换输入方式</button>
     </div>
     <div class="result" id="result">等待计算...</div>
+
+    <div id="display">0</div>
+
+    <div class="button-grid">
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button class="operator" onclick="setOperator('+')">+</button>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button class="operator" onclick="setOperator('-')">-</button>
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button class="operator" onclick="setOperator('*')">*</button>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendNumber('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+        <button class="operator" onclick="setOperator('/')">/</button>
+        <button class="clear" onclick="resetForm()">C</button>
+    </div>
 
     <script>
         function resetForm() {
